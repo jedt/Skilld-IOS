@@ -33,6 +33,12 @@ var Actions = {
       actionType: AppConstants.SHOW_JOBS,
     });
   },
+
+  hideJobs: function() {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.HIDE_JOBS,
+    });
+  },
 };
 
 module.exports = Actions;

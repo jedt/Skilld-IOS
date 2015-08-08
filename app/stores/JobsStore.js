@@ -39,6 +39,10 @@ AppDispatcher.register(function(action) {
         _isShowJobs = true;
         JobsStore.emitChange();
       break;
+    case AppConstants.HIDE_JOBS:
+        _isShowJobs = false;
+        JobsStore.emitChange();
+      break;
     default:
       break;
   }

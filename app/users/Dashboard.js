@@ -32,6 +32,8 @@ var styles = StyleSheet.create({
   }
 });
 
+var customPrev = <View/>
+
 function getState() {
   return {
     isShowJobs: JobsStore.isShowJobs()
@@ -103,7 +105,7 @@ var Dashboard = React.createClass({
                   style={styles.navBar}
                   statusBar='lightContent'
                   backgroundColor='#ef5350'
-                  customPrev={customPrev}
+                  customPrev={<View />}
                   customTitle={customTitle}/>
             }}
         />

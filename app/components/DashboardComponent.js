@@ -97,7 +97,7 @@ var styles = StyleSheet.create({
     marginBottom: 10
   },
   jobsSection: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#FFFFFF',
     paddingTop: 10,
   },
@@ -131,7 +131,26 @@ var styles = StyleSheet.create({
               fontSize: 13,
               textAlign: 'center',
               color: '#EF5350'
-            }
+            },
+    cancelTextBtn: {
+      flex: 1,
+      backgroundColor: '#EF5350',
+      height: 50,
+      marginLeft: 20,
+      marginRight: 20,
+      justifyContent: 'center',
+      alignItems: 'stretch',
+      alignSelf: 'stretch',
+      borderRadius: 3,
+      marginTop: 10,
+      marginBottom: 20
+    },
+      cancelText: {
+        fontFamily: 'Helvetica',
+        fontSize: 16,
+        color: '#FFFFFF',
+        textAlign: 'center'
+      }
 });
 
 
@@ -148,6 +167,10 @@ var DashboardComponent = React.createClass({
 
   onPressJob: function(jobName) {
     console.log(jobName);
+  },
+
+  onCloseJob: function() {
+    Actions.hideJobs();
   },
 
   render: function(){
@@ -217,6 +240,15 @@ var DashboardComponent = React.createClass({
                 </TouchableHighlight>
               </View>
             </View>
+          </View>
+          <View>
+            <TouchableOpacity onPress={this.onCloseJob}>
+              <View style={styles.cancelTextBtn}>
+                <Text style={styles.cancelText}>
+                  Cancel
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
     }
