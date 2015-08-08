@@ -5,6 +5,9 @@ var MainStyleSheet = require('../stylesheets/Main');
 var DashboardComponent = require('../components/DashboardComponent');
 var NavigationBar = require('react-native-navbar');
 var JobsStore = require('../stores/JobsStore');
+var DashboardStore = require('../stores/DashboardStore');
+var DashboardRoutes = require('./DashboardRoutes');
+var FastJsonPatch = require('../components/FastJsonPatch');
 
 var {
   StyleSheet,
@@ -36,7 +39,8 @@ var customPrev = <View/>
 
 function getState() {
   return {
-    isShowJobs: JobsStore.isShowJobs()
+    isShowJobs: JobsStore.isShowJobs(),
+    newView: DashboardStore.getNewView(),
   };
 }
 
@@ -52,10 +56,12 @@ var Dashboard = React.createClass({
 
   componentDidMount: function() {
     JobsStore.addChangeListener(this._onChange);
+    DashboardStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
     JobsStore.removeChangeListener(this._onChange);
+    DashboardStore.removeChangeListener(this._onChange);
   },
 
   renderScene: function(route, navigator) {
@@ -86,6 +92,90 @@ var Dashboard = React.createClass({
     );
   },
 
+  setNav: function(nav, args ,route) {
+    DashboardStore.resetView();
+
+    var action = 'push';
+    if (args) {
+      action = args.action;
+    }
+
+    if (action == 'replace') {
+      nav.popToTop();
+      nav.replace(route);
+    }
+    else if (action == 'replacePrevious') {
+      nav.replacePrevious(route);
+      nav.pop();
+    }
+    else if (action == 'replaceAtIndex') {
+      nav.replaceAtIndex(route, args.routeIndex);
+      nav.popToTop();
+    }
+    else {
+      nav.push(route);
+    }
+  },
+
+  componentWillUpdate: function(newProps, newState) {
+    var _new = newState.newView;
+
+    if (_new.pop) {
+      //before popping clear the view so it won't pop indefinitely
+
+      Actions.clearDashboardView();
+      this.refs.navHome.pop();
+
+      if (_new.args) {
+        if (_new.args) {
+          setTimeout(function(){
+            Actions.afterInvoiceError()
+          }, 800);
+        }
+        else {
+          setTimeout(function(){
+            Actions.popupPaymentErrorModal(_new.args);
+          }, 800);
+        }
+      }
+    }
+    else {
+      var options = undefined;
+      if (_new.args) {
+        if (_new.args.options) {
+          options = _new.args.options;
+        }
+      };
+
+      //save to json for diff
+      var currentStateView = {
+            view: this.state.newView.view,
+          };
+
+      var newStateView = {
+            view: _new.view,
+          };
+
+      debugger;
+
+      if (FastJsonPatch.hasDiff(currentStateView, newStateView)) {
+        debugger;
+        switch (_new.view) {
+          case 'WorkersList':
+              this.setNav(
+                this.refs.navHome,
+                {action: 'push'},
+                DashboardRoutes.getWorkersList(options)
+              );
+            break;
+          default:
+            this.refs.navHome.pop();
+            break;
+        }
+      }
+    }
+  },
+
   render: function(){
     var customTitle =
       <View style={styles.navLogoSection}>
@@ -96,7 +186,7 @@ var Dashboard = React.createClass({
 
     return (
       <Navigator
-          ref="navLogin"
+          ref="navHome"
           renderScene={this.renderScene}
           initialRoute={{
               component: DashboardComponent,

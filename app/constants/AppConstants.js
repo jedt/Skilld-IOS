@@ -8,5 +8,6 @@ module.exports = keyMirror({
   SET_LOGIN_NAV_TO_SIGNUP: null,
   POP_LOGIN_NAV: null,
   SHOW_JOBS: null,
-  HIDE_JOBS: null
+  HIDE_JOBS: null,
+  JOB_SELECTED: null
 });

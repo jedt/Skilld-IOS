@@ -153,7 +153,20 @@ var styles = StyleSheet.create({
       }
 });
 
-
+var markers = [
+  {
+    latitude: 14.55,
+    longitude: 121.03,
+    title: 'Foo Place',
+    subtitle: '1234 Foo Drive'
+  },
+  {
+    latitude: 14.5469,
+    longitude: 121.0277,
+    title: '1234',
+    subtitle: '1234 Foo Drive'
+  },
+];
 
 var DashboardComponent = React.createClass({
 
@@ -167,10 +180,24 @@ var DashboardComponent = React.createClass({
 
   onPressJob: function(jobName) {
     console.log(jobName);
+    Actions.jobSelected(jobName);
   },
 
   onCloseJob: function() {
     Actions.hideJobs();
+  },
+
+  _getAnnotations(region) {
+    debugger;
+    return [{
+      longitude: region.longitude,
+      latitude: region.latitude,
+      title: 'You Are Here',
+    }];
+  },
+
+  _onRegionChange(region) {
+    console.log(region)
   },
 
   render: function(){
@@ -277,8 +304,15 @@ var DashboardComponent = React.createClass({
               {jobsSection}
               <View style={[styles.row]}>
                 <MapView
+                  region={{
+                    latitude: 14.55,
+                    longitude: 121.03,
+                    longitudeDelta: 0.01,
+                    latitudeDelta: 0.01
+                  }}
                   style={styles.mapView}
                   showsUserLocation={true}
+                  annotations={markers}
                 />
               </View>
             </View>

@@ -39,6 +39,13 @@ var Actions = {
       actionType: AppConstants.HIDE_JOBS,
     });
   },
+
+  jobSelected: function(data) {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.JOB_SELECTED,
+      data: data
+    });
+  }
 };
 
 module.exports = Actions;
