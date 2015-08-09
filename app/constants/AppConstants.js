@@ -12,5 +12,6 @@ module.exports = keyMirror({
   JOB_SELECTED: null,
   SET_NAV_TO_WORKERS_LIST: null,
   BEFORE_GET_WORKERS_LIST: null,
-  SET_NAV_TO_DASHBOARD: null
+  SET_NAV_TO_DASHBOARD: null,
+  POP_DASHBOARD_NAV: null
 });

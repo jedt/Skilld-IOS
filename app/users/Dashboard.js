@@ -130,19 +130,6 @@ var Dashboard = React.createClass({
 
     if (_new.pop) {
       this.refs.navHome.pop();
-
-      if (_new.args) {
-        if (_new.args) {
-          setTimeout(function(){
-            Actions.afterInvoiceError()
-          }, 800);
-        }
-        else {
-          setTimeout(function(){
-            Actions.popupPaymentErrorModal(_new.args);
-          }, 800);
-        }
-      }
     }
     else {
       var options = undefined;
