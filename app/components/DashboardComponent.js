@@ -188,7 +188,6 @@ var DashboardComponent = React.createClass({
   },
 
   _getAnnotations(region) {
-    debugger;
     return [{
       longitude: region.longitude,
       latitude: region.latitude,

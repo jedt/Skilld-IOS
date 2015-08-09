@@ -4,6 +4,7 @@ var React = require('react-native');
 var MainStyleSheet = require('../stylesheets/Main');
 var NavigationBar = require('react-native-navbar');
 var WorkersList = require('./WorkersList');
+var Actions = require('../actions/Actions');
 
 var {
   StyleSheet,
@@ -49,7 +50,7 @@ var styles = StyleSheet.create({
 });
 
 function onPressPrevHandler() {
-  Actions.popDashbboardNav();
+  Actions.popDashboardNav();
 }
 
 var customTitle = <Image resizeMode="contain" style={styles.signUpImg} source={require('image!logo-nav')} />

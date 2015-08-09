@@ -45,6 +45,30 @@ var Actions = {
       actionType: AppConstants.JOB_SELECTED,
       data: data
     });
+  },
+
+  popDashboardNav: function() {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.POP_DASHBOARD_NAV,
+    });
+  },
+
+  setNavToDashboard: function() {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.SET_NAV_TO_DASHBOARD,
+    });
+  },
+
+  setNavToWorkersList: function() {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.SET_NAV_TO_WORKERS_LIST,
+    });
+  },
+
+  getWorkersList: function() {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.BEFORE_GET_WORKERS_LIST,
+    });
   }
 };
 

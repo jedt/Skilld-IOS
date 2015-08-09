@@ -9,5 +9,8 @@ module.exports = keyMirror({
   POP_LOGIN_NAV: null,
   SHOW_JOBS: null,
   HIDE_JOBS: null,
-  JOB_SELECTED: null
+  JOB_SELECTED: null,
+  SET_NAV_TO_WORKERS_LIST: null,
+  BEFORE_GET_WORKERS_LIST: null,
+  SET_NAV_TO_DASHBOARD: null
 });

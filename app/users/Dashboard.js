@@ -8,6 +8,7 @@ var JobsStore = require('../stores/JobsStore');
 var DashboardStore = require('../stores/DashboardStore');
 var DashboardRoutes = require('./DashboardRoutes');
 var FastJsonPatch = require('../components/FastJsonPatch');
+var Actions = require('../actions/Actions');
 
 var {
   StyleSheet,
@@ -54,9 +55,16 @@ var Dashboard = React.createClass({
     this.setState(getState());
   },
 
+  componentWillMount: function() {
+  },
+
   componentDidMount: function() {
     JobsStore.addChangeListener(this._onChange);
     DashboardStore.addChangeListener(this._onChange);
+
+    if (this.props.isDevelopment) {
+      Actions.setNavToWorkersList();
+    }
   },
 
   componentWillUnmount: function() {
@@ -121,9 +129,6 @@ var Dashboard = React.createClass({
     var _new = newState.newView;
 
     if (_new.pop) {
-      //before popping clear the view so it won't pop indefinitely
-
-      Actions.clearDashboardView();
       this.refs.navHome.pop();
 
       if (_new.args) {
@@ -156,10 +161,7 @@ var Dashboard = React.createClass({
             view: _new.view,
           };
 
-      debugger;
-
       if (FastJsonPatch.hasDiff(currentStateView, newStateView)) {
-        debugger;
         switch (_new.view) {
           case 'WorkersList':
               this.setNav(

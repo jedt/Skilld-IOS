@@ -47,6 +47,7 @@ AppDispatcher.register(function(action) {
       break;
     case AppConstants.AFTER_LOGIN_USER_SUCCESSFUL:
     case AppConstants.AFTER_LOGIN_USER_ERROR:
+    case AppConstants.SET_NAV_TO_DASHBOARD:
 
       setTimeout(()=>{
         _loadingStatus = null;

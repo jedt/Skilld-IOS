@@ -37,6 +37,9 @@ var _values = {
     };
 
 function loginUser(data) {
+  setTimeout(function(){
+    Actions.setNavToDashboard();
+  }, 800);
 }
 
 var LoginStore = assign({}, EventEmitter.prototype, {

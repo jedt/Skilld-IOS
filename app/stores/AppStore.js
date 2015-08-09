@@ -16,7 +16,7 @@ var _newView = {
   args: null,
 };
 
-var EmptyStore = assign({}, EventEmitter.prototype, {
+var AppStore = assign({}, EventEmitter.prototype, {
 
   getNewView: function() {
     return _newView;
@@ -43,9 +43,18 @@ var EmptyStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
+    case AppConstants.SET_NAV_TO_DASHBOARD:
+          _newView = {
+            view: 'Dashboard',
+            args: null,
+            pop: false
+          };
+
+        AppStore.emitChange();
+      break;
     default:
       break;
   }
 });
 
-module.exports = EmptyStore;
+module.exports = AppStore;

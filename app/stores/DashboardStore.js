@@ -53,13 +53,28 @@ var DashboardStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case AppConstants.JOB_SELECTED:
-        debugger;
         _newView = {
           view: 'WorkersList',
           args: action.data,
           pop: false
         };
 
+        DashboardStore.emitChange();
+      break;
+    case AppConstants.POP_DASHBOARD_NAV:
+          _newView = {
+            view: null,
+            args: null,
+            pop: true
+          };
+        DashboardStore.emitChange();
+      break;
+    case AppConstants.SET_NAV_TO_WORKERS_LIST:
+          _newView = {
+            view: 'WorkersList',
+            args: null,
+            pop: false
+          };
         DashboardStore.emitChange();
       break;
     default:
