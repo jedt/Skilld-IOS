@@ -7,6 +7,7 @@ var deviceHeight = require('Dimensions').get('window').height;
 var deviceWidth = require('Dimensions').get('window').width;
 var WorkersListStore = require('../stores/WorkerListStore');
 var Actions = require('../actions/Actions');
+var NativeNSPhoneCall = React.NativeModules.NativeNSPhoneCall;
 
 var {
   StyleSheet,
@@ -298,7 +299,7 @@ var WorkersList = React.createClass({
       )});
     }
     else {
-      phonecall('09178870659', true);
+      NativeNSPhoneCall.phoneCall('09178870659');
     }
   },
 

@@ -15,6 +15,7 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		0CB4C8601B761ADE009A1BD6 /* libRNModal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CB4C85F1B761ABD009A1BD6 /* libRNModal.a */; };
 		0CB4C8891B76FB6B009A1BD6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB4C8881B76FB6B009A1BD6 /* Images.xcassets */; };
+		0CB4C88D1B77084D009A1BD6 /* NativeNSPhoneCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CB4C88C1B77084D009A1BD6 /* NativeNSPhoneCall.m */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -116,6 +117,8 @@
 		00E356F21AD99517003FC87E /* SkylldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkylldTests.m; sourceTree = "<group>"; };
 		0CB4C8501B761ABD009A1BD6 /* RNModal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNModal.xcodeproj; path = "node_modules/react-native-modal/RNModal.xcodeproj"; sourceTree = "<group>"; };
 		0CB4C8881B76FB6B009A1BD6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iOS/Images.xcassets; sourceTree = "<group>"; };
+		0CB4C88B1B77084D009A1BD6 /* NativeNSPhoneCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeNSPhoneCall.h; path = app/native_modules/NativeNSPhoneCall.h; sourceTree = "<group>"; };
+		0CB4C88C1B77084D009A1BD6 /* NativeNSPhoneCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeNSPhoneCall.m; path = app/native_modules/NativeNSPhoneCall.m; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Skilld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skilld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +219,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0CB4C88A1B7707C8009A1BD6 /* NativeModules */ = {
+			isa = PBXGroup;
+			children = (
+				0CB4C88B1B77084D009A1BD6 /* NativeNSPhoneCall.h */,
+				0CB4C88C1B77084D009A1BD6 /* NativeNSPhoneCall.m */,
+			);
+			name = NativeModules;
+			sourceTree = "<group>";
+		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +302,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				0CB4C88A1B7707C8009A1BD6 /* NativeModules */,
 				0CB4C8881B76FB6B009A1BD6 /* Images.xcassets */,
 				13B07FAE1A68108700A75B9A /* Skylld */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -501,6 +514,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				0CB4C88D1B77084D009A1BD6 /* NativeNSPhoneCall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -112,33 +112,10 @@ var LoginComponent = React.createClass({
   },
 
   onPressLogIn: function() {
-    var data = this.state.values;
-
-    var valid = true;
-
-    if (!data.username) {
-      this.state.errors.username = {
-        errorMsg: 'Please enter your username',
-        hasError: true
-      }
-
-      this.setState(this.state);
-      valid = false;
-    }
-
-    if (!data.password) {
-      this.state.errors.password = {
-        errorMsg: 'Please enter your password',
-        hasError: true
-      }
-
-      this.setState(this.state);
-      valid = false;
-    }
-
-    if (valid) {
-      Actions.loginUser(data);
-    }
+      Actions.loginUser({
+                  username: 'demo',
+                  password: 'demo'
+                });
   },
 
   _handleOnChange: function(field, text) {

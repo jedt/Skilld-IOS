@@ -9,6 +9,9 @@ var Actions = require('../actions/Actions');
 var CHANGE_EVENT = 'change';
 var _isShowJobs = false;
 var JobsStore = assign({}, EventEmitter.prototype, {
+  resetPanel: function() {
+    _isShowJobs = false;
+  },
 
   isShowJobs: function() {
     return _isShowJobs;
@@ -39,6 +42,7 @@ AppDispatcher.register(function(action) {
         _isShowJobs = true;
         JobsStore.emitChange();
       break;
+
     case AppConstants.HIDE_JOBS:
         _isShowJobs = false;
         JobsStore.emitChange();

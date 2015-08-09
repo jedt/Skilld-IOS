@@ -130,6 +130,7 @@ var Dashboard = React.createClass({
 
     if (_new.pop) {
       this.refs.navHome.pop();
+      DashboardStore.resetView();
     }
     else {
       var options = undefined;

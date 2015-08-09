@@ -9,6 +9,8 @@ var LoginStore = require('../stores/LoginStore');
 var LoginRoutes = require('./LoginRoutes');
 var FastJsonPatch = require('../components/FastJsonPatch');
 var AppConstants = require('../constants/AppConstants');
+var deviceHeight = require('Dimensions').get('window').height;
+var deviceWidth = require('Dimensions').get('window').width;
 
 var {
   StyleSheet,
@@ -135,16 +137,23 @@ var About = React.createClass({
       <View style={styles.nav}>
         {navBar}
           <View style={styles.navContent}>
-            <Component
-              errors={this.state.errors}
-              values={this.state.values}
-              navigator={navigator}
-              options={route.options}
-              route={route}
-              beforeNavigatorPop={this.beforeNavigatorPop}
-              _handleOnChange={this._handleOnChange}
-              onPressLogin={this.onPressLogin}
-            />
+            <ScrollView
+              contentContainerStyle={{flex: 1}}
+              automaticallyAdjustContentInsets={false}
+              bounces={false}
+              keyboardDismissMode='on-drag'
+            >
+              <Component
+                errors={this.state.errors}
+                values={this.state.values}
+                navigator={navigator}
+                options={route.options}
+                route={route}
+                beforeNavigatorPop={this.beforeNavigatorPop}
+                _handleOnChange={this._handleOnChange}
+                onPressLogin={this.onPressLogin}
+              />
+            </ScrollView>
           </View>
       </View>
     );

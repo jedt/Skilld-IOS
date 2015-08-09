@@ -6,7 +6,6 @@ var deviceHeight = require('Dimensions').get('window').height;
 var deviceWidth = require('Dimensions').get('window').width;
 var Actions = require('../actions/Actions');
 
-
 var {
   StyleSheet,
   Text,
@@ -179,7 +178,7 @@ var DashboardComponent = React.createClass({
   },
 
   onPressJob: function(jobName) {
-    console.log(jobName);
+    Actions.hideJobs();
     Actions.jobSelected(jobName);
   },
 

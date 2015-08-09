@@ -48,7 +48,7 @@ var SignUp = React.createClass({
         <View style={styles.content}>
           <View style={styles.imageSection}>
             <View style={styles.imageSectionContent}>
-              <Text>Logo</Text>
+              <Image resizeMode="contain" style={styles.signUpImg} source={require('image!logo')} />
             </View>
           </View>
 
