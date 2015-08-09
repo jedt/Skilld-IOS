@@ -298,7 +298,7 @@ var WorkersList = React.createClass({
       )});
     }
     else {
-      console.log('pressed again')
+      phonecall('09178870659', true);
     }
   },
 
@@ -315,7 +315,6 @@ var WorkersList = React.createClass({
       callWorkerSection =
               <View style={styles.callWorkerSection}>
                 <View style={styles.callButton}>
-                  <TouchableOpacity onPress={this.onPressCall}>
                     <View style={styles.callButtonContent}>
                         <View style={styles.callButtonContentIcon}>
                           <Image resizeMode="contain" style={styles.searchImg} source={require('image!phone-icon')} />
@@ -324,7 +323,6 @@ var WorkersList = React.createClass({
                           <Text style={styles.callButtonText}>Call</Text>
                         </View>
                     </View>
-                  </TouchableOpacity>
                 </View>
               </View>
       contentStyle = styles.rowListContentPressed;
